@@ -8,10 +8,15 @@ from concessionaire.views import *
 
 router = routers.DefaultRouter()
 router.register('business',Business_view,basename='business')
-router.register('employee',Employee_view,basename='employee')
-router.register('automobile',Automobile_view,basename='automobile')
 router.register('inventory',Inventory_view,basename='inventory')
 router.register('promotion',Promotion_view,basename='promotion')
+
+router.register('employee',Employee_view,basename='employee')
+router.register('automobile',Automobile_view,basename='automobile')
+router.register('automobile_brand',Automobile_brand_view,basename='automobile_brand')
+router.register('home',Home_view,basename='home')
+router.register('user_interface',User_interface_view,basename='user_interface')
+router.register('comparasion_automobile',Comparison_automobile_view,basename='Comparison_automobile_view')
 
 urlpatterns = [
     path('', include(router.urls)),

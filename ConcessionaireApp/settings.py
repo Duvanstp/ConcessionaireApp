@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-mzkbim21ef74$$93rvg*k4@-@1xgn7yku3t$ujad=u4r7-n7p6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 AUTH_USER_MODEL = 'concessionaire.Employee'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']#
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWS_METHODS = ['GET','OPTIONS','PATCH','POST','PUT','DELETE',]
 CORS_ALLOWS_CREDENTIALS = True
