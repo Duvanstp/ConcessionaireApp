@@ -18,63 +18,89 @@ class Employee(AbstractUser):
         return self.id_employee
 
 class Automobile(models.Model):
-    OPTIONS_RANGE =[
-        ('High-end', 'High-end'),
-        ('Mid-range', 'Mid-range'),
-        ('Low end', 'Low end'),
-    ]
     OPTIONS_TRANSMISSION = [
         ('Manual', 'Manual'),
         ('Auto', 'Auto'),
     ]
     OPTIONS_FUEL = [
         ('Gasoline','Gasoline'),
-        ('Electric','Electric'),
-        ('Hibrid','Hibrid'),
+        ('Diesel', 'Diesel'),
+        ('Electric', 'Electric'),
+        ('Hybrid', 'Hybrid'),
     ]
     OPTIONS_TRACTION =[
-        ('4X2','4X2'),
-        ('4X4','4X4'),
+        ('4WD','4WD'),
+        ('AWD', 'AWD'),
+        ('FWD', 'FWD'),
+        ('RWD', 'RWD'),
     ]
-    body_shape = models.CharField(max_length=100)
-    brand = models.CharField(max_length=30)
-    mileage = models.FloatField()
-    price = models.FloatField()
-    model = models.CharField(max_length=30)
-    year = models.CharField(max_length=30)
-    id_vehicle = models.IntegerField()
+    TITLE_STATUS_OPTION = [
+        ('Clean','Clean'),
+        ('Rebuild/Reconstructed','Rebuild/Reconstructed'),
+    ]
+    BODY_SHAPE =[
+        ('Sedan','Sedan'),
+        ('Coupe','Coupe'),
+        ('Hatchback','Hatchback'),
+        ('Cabriolet','Cabriolet'),
+        ('Pickup','Pickup'),
+        ('Wagon','Wagon'),
+        ('Van','Van'),
+        ('SUV','SUV'),
+    ]
+    MATERIALS = [
+        ('Leather','Leather'),
+        ('Cloth','Cloth'),
+    ]
+    DOORS = [
+        ('Four','Four'),
+        ('Three','Three'),
+        ('Two','Two'),
+    ]
+
+    brand = models.CharField(max_length=50)#
+    mileage = models.FloatField()#
+    price = models.FloatField()#
+    model = models.CharField(max_length=30)#
+    year = models.CharField(max_length=50)#
+    id_vehicle = models.IntegerField()#
     in_promotion = models.BooleanField(default=False)
-    description = models.TextField()
-    details = models.TextField()# no
-    range = models.CharField(max_length=10, choices=OPTIONS_RANGE, default='Low end') #--
-    plates = models.CharField(max_length=50)#--
-    picture_main = models.ImageField(upload_to='automobile/')
-    picture_front = models.ImageField(upload_to='automobile/')
-    picture_back = models.ImageField(upload_to='automobile/')
-    picture_profile = models.ImageField(upload_to='automobile/')
-    picture_motor = models.ImageField(upload_to='automobile/')
-    picture_dashboard = models.ImageField(upload_to='automobile/')
-    color = models.CharField(max_length=50)
-    ##
-    main_collage = models.ImageField(upload_to='automobile/')
-    capacity = models.IntegerField()
-    transmission = models.CharField(max_length=20,choices=OPTIONS_TRANSMISSION, default='Manual')#-- pendiente de tener lista
-    horsepower = models.CharField(max_length=50)
-    airbag = models.BooleanField(default=False)
-    traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='4X2') # 4x4 y 4x2 despleglable
-    electric_parking_brake = models.BooleanField(default=False)
-    electric_glasses = models.BooleanField(default=False)
-    electric_mirrors = models.BooleanField(default=False)
-    air_conditioner = models.BooleanField(default=False)
-    reverse_camera = models.BooleanField(default=False)
-    reversing_sensors = models.CharField(max_length=100)
-    electronic_stability_control = models.BooleanField(default=False)
-    ascent_and_descent_control = models.BooleanField(default=False)
-    data_sheet = models.FileField(upload_to='data_sheets/')
-    forward_collision_alert = models.BooleanField(default=False)
-    involuntary_lane_departure_alert = models.BooleanField(default=False)
-    ABS = models.BooleanField(default=False)
-    fuel = models.CharField(max_length=20,choices=OPTIONS_FUEL, default='Manual')
+    description = models.TextField()#
+    #details = models.TextField()# no
+    owners = models.CharField(max_length=50,default='')#
+    picture_main = models.ImageField(upload_to='automobile/')#
+    picture_front = models.ImageField(upload_to='automobile/')#
+    picture_back = models.ImageField(upload_to='automobile/')#
+    picture_profile = models.ImageField(upload_to='automobile/')#
+    picture_engine = models.ImageField(upload_to='automobile/')#
+    picture_dashboard = models.ImageField(upload_to='automobile/')#
+    main_collage = models.ImageField(upload_to='automobile/')#
+    exterior_color = models.CharField(max_length=50)#
+    interior_color = models.CharField(max_length=50)#
+    VIN = models.CharField(max_length=50)#
+    capacity = models.IntegerField(default=5)#
+    engine_size = models.CharField(max_length=50)  #
+    accidents = models.IntegerField(default=0)
+    MPG = models.FloatField(default=0)#
+    clicks = models.IntegerField(default=0)#
+
+
+    body_shape = models.CharField(max_length=50, choices=BODY_SHAPE, default='Sedan')  #
+    transmission = models.CharField(max_length=20,choices=OPTIONS_TRANSMISSION, default='Manual')#
+    title_status = models.CharField(max_length=50,choices=TITLE_STATUS_OPTION, default='Clean')#
+    traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='4WD')#
+    fuel = models.CharField(max_length=20, choices=OPTIONS_FUEL, default='Gasoline')
+    seats_materials = models.CharField(max_length=20, choices=MATERIALS, default='Leather')
+    doors = models.CharField(max_length=20, choices=DOORS, default='Four')
+
+
+    electric_parking_brake = models.BooleanField(default=False)#
+    power_seats = models.BooleanField(default=False)#
+    reverse_camera = models.BooleanField(default=False)#
+    reversing_sensors = models.BooleanField(default=False)#
+    navigation_system = models.BooleanField(default=False)#
+    bluetooth = models.BooleanField(default=False)#
+    moonroof = models.BooleanField(default=False)#
     def __str__(self):
         return self.id_vehicle
 

@@ -11,6 +11,7 @@ router.register('business',Business_view,basename='business')
 router.register('inventory',Inventory_view,basename='inventory')
 router.register('promotion',Promotion_view,basename='promotion')
 
+
 router.register('employee',Employee_view,basename='employee')
 router.register('automobile',Automobile_view,basename='automobile')
 router.register('automobile_brand',Automobile_brand_view,basename='automobile_brand')
