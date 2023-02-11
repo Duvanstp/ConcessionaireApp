@@ -52,12 +52,6 @@ class Automobile(models.Model):
         ('Leather','Leather'),
         ('Cloth','Cloth'),
     ]
-    DOORS = [
-        ('Four','Four'),
-        ('Three','Three'),
-        ('Two','Two'),
-    ]
-
     brand = models.CharField(max_length=50)#
     mileage = models.FloatField()#
     price = models.FloatField()#
@@ -66,7 +60,6 @@ class Automobile(models.Model):
     id_vehicle = models.IntegerField()#
     in_promotion = models.BooleanField(default=False)
     description = models.TextField()#
-    #details = models.TextField()# no
     owners = models.CharField(max_length=50,default='')#
     picture_main = models.ImageField(upload_to='automobile/')#
     picture_front = models.ImageField(upload_to='automobile/')#
@@ -81,7 +74,6 @@ class Automobile(models.Model):
     capacity = models.IntegerField(default=5)#
     engine_size = models.CharField(max_length=50)  #
     accidents = models.IntegerField(default=0)
-    MPG = models.FloatField(default=0)#
     clicks = models.IntegerField(default=0)#
 
 
@@ -91,7 +83,6 @@ class Automobile(models.Model):
     traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='4WD')#
     fuel = models.CharField(max_length=20, choices=OPTIONS_FUEL, default='Gasoline')
     seats_materials = models.CharField(max_length=20, choices=MATERIALS, default='Leather')
-    doors = models.CharField(max_length=20, choices=DOORS, default='Four')
 
 
     electric_parking_brake = models.BooleanField(default=False)#
@@ -99,7 +90,6 @@ class Automobile(models.Model):
     reverse_camera = models.BooleanField(default=False)#
     reversing_sensors = models.BooleanField(default=False)#
     navigation_system = models.BooleanField(default=False)#
-    bluetooth = models.BooleanField(default=False)#
     moonroof = models.BooleanField(default=False)#
     def __str__(self):
         return self.id_vehicle
