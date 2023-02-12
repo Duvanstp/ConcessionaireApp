@@ -11,13 +11,16 @@ router.register('business',Business_view,basename='business')
 router.register('inventory',Inventory_view,basename='inventory')
 router.register('promotion',Promotion_view,basename='promotion')
 
-
 router.register('employee',Employee_view,basename='employee')
 router.register('automobile',Automobile_view,basename='automobile')
 router.register('automobile_brand',Automobile_brand_view,basename='automobile_brand')
 router.register('home',Home_view,basename='home')
-router.register('user_interface',User_interface_view,basename='user_interface')
-router.register('comparasion_automobile',Comparison_automobile_view,basename='Comparison_automobile_view')
+router.register('car',Home_view,basename='car')
+router.register('brand',Home_view,basename='brand')
+router.register('models',Home_view,basename='models')
+router.register('admin',User_interface_view,basename='admin')
+router.register('post',Post_view,basename='post')
+router.register('comparasion',Comparison_automobile_view,basename='Comparison')
 
 urlpatterns = [
     path('', include(router.urls)),

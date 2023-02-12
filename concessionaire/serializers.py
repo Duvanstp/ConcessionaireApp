@@ -6,6 +6,11 @@ class Business_serializer(serializers.ModelSerializer):
         model = Business
         fields = '__all__'
 
+class Post_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = '__all__'
+
 class Employee_serializer(serializers.ModelSerializer):
     business = Business_serializer(read_only=True)
     business_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Business.objects.all(), source='business')

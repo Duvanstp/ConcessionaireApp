@@ -33,6 +33,27 @@ class TokenProvider(ObtainAuthToken):
         employee = Employee_serializer(user)
         return Response(employee.data)
 
+class Post_view(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = Post_serializer
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', True)
+        instance = self.get_object()
+        datos = request.data.copy()
+        if datos['img_main'] == '':
+            datos.pop('img_main')
+        if datos['img_seccion_1'] == '':
+            datos.pop('img_seccion_1')
+        if datos['img_seccion_2'] == '':
+            datos.pop('img_seccion_2')
+        if datos['img_seccion_3'] == '':
+            datos.pop('img_seccion_3')
+        serializer = self.get_serializer(instance, data=datos, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
 class Home_view(viewsets.ModelViewSet):
     queryset = Automobile.objects.all()
     serializer_class = Automobile_serializer
@@ -40,20 +61,20 @@ class Home_view(viewsets.ModelViewSet):
         partial = kwargs.pop('partial', True)
         instance = self.get_object()
         datos = request.data.copy()
-        if datos['picture_main'] == '':
-            datos.pop('picture_main')
-        if datos['picture_front'] == '':
-            datos.pop('picture_front')
-        if datos['picture_back'] == '':
-            datos.pop('picture_back')
-        if datos['picture_profile'] == '':
-            datos.pop('picture_profile')
-        if datos['picture_engine'] == '':
-            datos.pop('picture_engine')
-        if datos['picture_dashboard'] == '':
-            datos.pop('picture_dashboard')
-        if datos['main_collage'] == '':
-            datos.pop('main_collage')
+        if datos['main_view'] == '':
+            datos.pop('main_view')
+        if datos['front_view'] == '':
+            datos.pop('front_view')
+        if datos['back_view'] == '':
+            datos.pop('back_view')
+        if datos['profile_view'] == '':
+            datos.pop('profile_view')
+        if datos['engine_view'] == '':
+            datos.pop('engine_view')
+        if datos['dashboard_view'] == '':
+            datos.pop('dashboard_view')
+        if datos['gallery'] == '':
+            datos.pop('gallery')
         serializer = self.get_serializer(instance, data=datos, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
@@ -75,20 +96,20 @@ class Automobile_brand_view(viewsets.ModelViewSet): #Brand
         partial = kwargs.pop('partial', True)
         instance = self.get_object()
         datos = request.data.copy()
-        if datos['picture_main'] == '':
-            datos.pop('picture_main')
-        if datos['picture_front'] == '':
-            datos.pop('picture_front')
-        if datos['picture_back'] == '':
-            datos.pop('picture_back')
-        if datos['picture_profile'] == '':
-            datos.pop('picture_profile')
-        if datos['picture_engine'] == '':
-            datos.pop('picture_engine')
-        if datos['picture_dashboard'] == '':
-            datos.pop('picture_dashboard')
-        if datos['main_collage'] == '':
-            datos.pop('main_collage')
+        if datos['main_view'] == '':
+            datos.pop('main_view')
+        if datos['front_view'] == '':
+            datos.pop('front_view')
+        if datos['back_view'] == '':
+            datos.pop('back_view')
+        if datos['profile_view'] == '':
+            datos.pop('profile_view')
+        if datos['engine_view'] == '':
+            datos.pop('engine_view')
+        if datos['dashboard_view'] == '':
+            datos.pop('dashboard_view')
+        if datos['gallery'] == '':
+            datos.pop('gallery')
         serializer = self.get_serializer(instance, data=datos, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
@@ -112,20 +133,20 @@ class Comparison_automobile_view(viewsets.ModelViewSet):
         partial = kwargs.pop('partial', True)
         instance = self.get_object()
         datos = request.data.copy()
-        if datos['picture_main'] == '':
-            datos.pop('picture_main')
-        if datos['picture_front'] == '':
-            datos.pop('picture_front')
-        if datos['picture_back'] == '':
-            datos.pop('picture_back')
-        if datos['picture_profile'] == '':
-            datos.pop('picture_profile')
-        if datos['picture_engine'] == '':
-            datos.pop('picture_engine')
-        if datos['picture_dashboard'] == '':
-            datos.pop('picture_dashboard')
-        if datos['main_collage'] == '':
-            datos.pop('main_collage')
+        if datos['main_view'] == '':
+            datos.pop('main_view')
+        if datos['front_view'] == '':
+            datos.pop('front_view')
+        if datos['back_view'] == '':
+            datos.pop('back_view')
+        if datos['profile_view'] == '':
+            datos.pop('profile_view')
+        if datos['engine_view'] == '':
+            datos.pop('engine_view')
+        if datos['dashboard_view'] == '':
+            datos.pop('dashboard_view')
+        if datos['gallery'] == '':
+            datos.pop('gallery')
         serializer = self.get_serializer(instance, data=datos, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
@@ -158,20 +179,20 @@ class Automobile_view(viewsets.ModelViewSet): #STORE
         partial = kwargs.pop('partial', True)
         instance = self.get_object()
         datos = request.data.copy()
-        if datos['picture_main'] == '':
-            datos.pop('picture_main')
-        if datos['picture_front'] == '':
-            datos.pop('picture_front')
-        if datos['picture_back'] == '':
-            datos.pop('picture_back')
-        if datos['picture_profile'] == '':
-            datos.pop('picture_profile')
-        if datos['picture_engine'] == '':
-            datos.pop('picture_engine')
-        if datos['picture_dashboard'] == '':
-            datos.pop('picture_dashboard')
-        if datos['main_collage'] == '':
-            datos.pop('main_collage')
+        if datos['main_view'] == '':
+            datos.pop('main_view')
+        if datos['front_view'] == '':
+            datos.pop('front_view')
+        if datos['back_view'] == '':
+            datos.pop('back_view')
+        if datos['profile_view'] == '':
+            datos.pop('profile_view')
+        if datos['engine_view'] == '':
+            datos.pop('engine_view')
+        if datos['dashboard_view'] == '':
+            datos.pop('dashboard_view')
+        if datos['gallery'] == '':
+            datos.pop('gallery')
         serializer = self.get_serializer(instance, data=datos, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
