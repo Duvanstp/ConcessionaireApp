@@ -20,7 +20,8 @@ router.register('brand',Home_view,basename='brand')
 router.register('models',Home_view,basename='models')
 router.register('admin',User_interface_view,basename='admin')
 router.register('post',Post_view,basename='post')
-router.register('comparasion',Comparison_automobile_view,basename='Comparison')
+#router.register('comparasion',Comparison_automobile_view,basename='comparison')
+router.register('comparison',Home_view,basename='comparison')
 
 urlpatterns = [
     path('', include(router.urls)),

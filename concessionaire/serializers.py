@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from concessionaire.models import *
+from drf_extra_fields.fields import Base64ImageField
 
 class Business_serializer(serializers.ModelSerializer):
     class Meta:
@@ -29,6 +30,13 @@ class Employee_serializer(serializers.ModelSerializer):
         user.save()
         return user
 class Automobile_serializer(serializers.ModelSerializer):
+    main_view = Base64ImageField(required=False)
+    front_view = Base64ImageField(required=False)
+    back_view = Base64ImageField(required=False)
+    profile_view = Base64ImageField(required=False)
+    engine_view = Base64ImageField(required=False)
+    dashboard_view = Base64ImageField(required=False)
+    gallery = Base64ImageField(required=False)
     class Meta:
         model = Automobile
         fields = '__all__'

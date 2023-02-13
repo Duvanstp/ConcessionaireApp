@@ -32,7 +32,7 @@ class Post(models.Model):
 class Automobile(models.Model):
     OPTIONS_TRANSMISSION = [
         ('Manual', 'Manual'),
-        ('Auto', 'Auto'),
+        ('Automatic', 'Automatic'),
     ]
     OPTIONS_FUEL = [
         ('Gasoline','Gasoline'),
@@ -48,7 +48,7 @@ class Automobile(models.Model):
     ]
     TITLE_STATUS_OPTION = [
         ('Clean','Clean'),
-        ('Rebuild/Reconstructed','Rebuild/Reconstructed'),
+        ('Rebuild/Reconstructed','Rebuilt/Reconstructed'),
     ]
     BODY_SHAPE =[
         ('Sedan','Sedan'),
@@ -64,38 +64,35 @@ class Automobile(models.Model):
         ('Leather','Leather'),
         ('Cloth','Cloth'),
     ]
-    brand = models.CharField(max_length=50)
-    mileage = models.FloatField()
-    price = models.FloatField()
-    model = models.CharField(max_length=30)
-    year = models.CharField(max_length=50)
-    id_vehicle = models.CharField(max_length=50)
-    in_promotion = models.BooleanField(default=False)
+    brand = models.CharField(max_length=50, default='', blank=True)
+    mileage = models.FloatField(blank=True)
+    price = models.FloatField(blank=True)
+    model = models.CharField(max_length=30,blank=True)
+    year = models.CharField(max_length=50,blank=True)
+    id_vehicle = models.CharField(max_length=50,blank=True)
+    in_promotion = models.BooleanField(default=False,blank=True)
     description = models.TextField()
-    owners = models.CharField(max_length=50,default='')
-    main_view = models.ImageField(upload_to='automobile/')
-    front_view = models.ImageField(upload_to='automobile/')
-    back_view = models.ImageField(upload_to='automobile/')
-    profile_view = models.ImageField(upload_to='automobile/')
-    engine_view = models.ImageField(upload_to='automobile/')
-    dashboard_view = models.ImageField(upload_to='automobile/')
-    gallery = models.ImageField(upload_to='automobile/')
-    exterior_color = models.CharField(max_length=50)
-    interior_color = models.CharField(max_length=50)
-    VIN = models.CharField(max_length=50)
-    capacity = models.IntegerField(default=5)
-    engine_size = models.CharField(max_length=50)
-    accidents = models.IntegerField(default=0)
-    clicks = models.IntegerField(default=0)
-
+    owners = models.CharField(max_length=50,default='',blank=True,)
+    main_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    front_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    back_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    profile_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    engine_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    dashboard_view = models.ImageField(upload_to='automobile/',blank='',default="")
+    gallery = models.ImageField(upload_to='automobile/',blank='',default="")
+    exterior_color = models.CharField(max_length=50,blank=True)
+    interior_color = models.CharField(max_length=50,blank=True)
+    VIN = models.CharField(max_length=50,blank=True)
+    capacity = models.IntegerField(default=5,blank=True)
+    engine_size = models.CharField(max_length=50,blank=True)
+    accidents = models.IntegerField(default=0,blank=True)
+    clicks = models.IntegerField(default=0,blank=True)
     body_shape = models.CharField(max_length=50, choices=BODY_SHAPE, default='Sedan')
     transmission = models.CharField(max_length=20,choices=OPTIONS_TRANSMISSION, default='Manual')
     title_status = models.CharField(max_length=50,choices=TITLE_STATUS_OPTION, default='Clean')
     traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='4WD')
     fuel = models.CharField(max_length=20, choices=OPTIONS_FUEL, default='Gasoline')
     seats_materials = models.CharField(max_length=20, choices=MATERIALS, default='Leather')
-
-
     electric_parking_brake = models.BooleanField(default=False)
     power_seats = models.BooleanField(default=False)
     reverse_camera = models.BooleanField(default=False)
