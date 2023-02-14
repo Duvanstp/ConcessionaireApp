@@ -41,14 +41,14 @@ class Automobile(models.Model):
         ('Hybrid', 'Hybrid'),
     ]
     OPTIONS_TRACTION =[
-        ('4WD','4WD'),
+        ('FourWD','FourWD'),
         ('AWD', 'AWD'),
         ('FWD', 'FWD'),
         ('RWD', 'RWD'),
     ]
     TITLE_STATUS_OPTION = [
         ('Clean','Clean'),
-        ('Rebuild/Reconstructed','Rebuilt/Reconstructed'),
+        ('Rebuilt/Reconstructed','Rebuilt/Reconstructed'),
     ]
     BODY_SHAPE =[
         ('Sedan','Sedan'),
@@ -71,7 +71,7 @@ class Automobile(models.Model):
     year = models.CharField(max_length=50,blank=True)
     id_vehicle = models.CharField(max_length=50,blank=True)
     in_promotion = models.BooleanField(default=False,blank=True)
-    description = models.TextField()
+    description = models.TextField(blank='',default="")
     owners = models.CharField(max_length=50,default='',blank=True,)
     main_view = models.ImageField(upload_to='automobile/',blank='',default="")
     front_view = models.ImageField(upload_to='automobile/',blank='',default="")
@@ -90,7 +90,7 @@ class Automobile(models.Model):
     body_shape = models.CharField(max_length=50, choices=BODY_SHAPE, default='Sedan')
     transmission = models.CharField(max_length=20,choices=OPTIONS_TRANSMISSION, default='Manual')
     title_status = models.CharField(max_length=50,choices=TITLE_STATUS_OPTION, default='Clean')
-    traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='4WD')
+    traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='FourWD')
     fuel = models.CharField(max_length=20, choices=OPTIONS_FUEL, default='Gasoline')
     seats_materials = models.CharField(max_length=20, choices=MATERIALS, default='Leather')
     electric_parking_brake = models.BooleanField(default=False)
