@@ -60,10 +60,6 @@ class Automobile(models.Model):
         ('Van','Van'),
         ('SUV','SUV'),
     ]
-    MATERIALS = [
-        ('Leather','Leather'),
-        ('Cloth','Cloth'),
-    ]
     brand = models.CharField(max_length=50, default='', blank=True)
     mileage = models.FloatField(blank=True)
     price = models.FloatField(blank=True)
@@ -80,8 +76,7 @@ class Automobile(models.Model):
     engine_view = models.ImageField(upload_to='automobile/',blank='',default="")
     dashboard_view = models.ImageField(upload_to='automobile/',blank='',default="")
     gallery = models.ImageField(upload_to='automobile/',blank='',default="")
-    exterior_color = models.CharField(max_length=50,blank=True)
-    interior_color = models.CharField(max_length=50,blank=True)
+    color = models.CharField(max_length=50,blank=True)
     VIN = models.CharField(max_length=50,blank=True)
     capacity = models.IntegerField(default=5,blank=True)
     engine_size = models.CharField(max_length=50,blank=True)
@@ -92,7 +87,7 @@ class Automobile(models.Model):
     title_status = models.CharField(max_length=50,choices=TITLE_STATUS_OPTION, default='Clean')
     traction = models.CharField(max_length=50, choices=OPTIONS_TRACTION, default='FourWD')
     fuel = models.CharField(max_length=20, choices=OPTIONS_FUEL, default='Gasoline')
-    seats_materials = models.CharField(max_length=20, choices=MATERIALS, default='Leather')
+    MPG = models.CharField(max_length=50)
     electric_parking_brake = models.BooleanField(default=False)
     power_seats = models.BooleanField(default=False)
     reverse_camera = models.BooleanField(default=False)
